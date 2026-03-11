@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Demand {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  commodityName   String
+  quantity        Int
+  destinationCity String
+  neededDate      DateTime
+  notes           String?
+  createdAt       DateTime @default(now())
+}
+
+model Supply {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  commodityName String
+  quantity      Int
+  originCity    String
+  price         Float
+  contactInfo   String
+  createdAt     DateTime @default(now())
+}
+
+model Driver {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  driverName      String
+  vehicleType     String
+  capacity        Float
+  currentLocation String
+  destinationCity String?
+  availableDate   DateTime?
+  createdAt       DateTime @default(now())
+}
+
+model LogisticsRequest {
+  id                  String   @id @default(auto()) @map("_id") @db.ObjectId
+  commodity           String
+  weight              Float
+  pickupLocation      String
+  destinationLocation String
+  vehicleType         String
+  status              String   @default("PENDING") // PENDING, ACCEPTED, COMPLETED
+  assignedDriverId    String?  @db.ObjectId
+  createdAt           DateTime @default(now())
+}
