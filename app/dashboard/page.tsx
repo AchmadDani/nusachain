@@ -79,7 +79,7 @@ export default async function DashboardPage() {
           </div>
           <div className="grid grid-cols-1 gap-4">
             {recentDemands.length > 0 ? (
-              recentDemands.map((item) => (
+              recentDemands.map((item: any) => (
                 <CommodityCard
                   key={item.id}
                   id={item.id}
@@ -110,7 +110,7 @@ export default async function DashboardPage() {
           </div>
           <div className="grid grid-cols-1 gap-4">
             {recentSupplies.length > 0 ? (
-              recentSupplies.map((item) => (
+              recentSupplies.map((item: any) => (
                 <CommodityCard
                   key={item.id}
                   id={item.id}
@@ -142,7 +142,7 @@ export default async function DashboardPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
              {recentLogistics.length > 0 ? (
-                recentLogistics.map((req) => (
+                recentLogistics.map((req: any) => (
                   <LogisticsCard
                     key={req.id}
                     id={req.id}
